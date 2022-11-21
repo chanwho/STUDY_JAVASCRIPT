@@ -26,5 +26,23 @@ const cars = ["BMW", "Volvo", "Mini"];
 for (let car of cars) {
   console.log(`${car}`);
 }
+cars.forEach((car) => {
+  console.log(`${car}`);
+});
+
+// forEach
+const array1 = ["a", "b", "c"];
+array1.forEach((element) => console.log(element));
+
+// Arrow Function
+let arrowFunction = (element, index) => {
+  console.log(`${element} ${index}`);
+};
+array1.forEach(arrowFunction);
+
+// normal Function
+function elementNormal() {
+  console.log(element);
+}
 
 console.log();

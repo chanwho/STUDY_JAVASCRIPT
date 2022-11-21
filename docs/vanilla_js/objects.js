@@ -1,6 +1,6 @@
 // let animal = {key:value ...}
 let animal = { name: "juju", species: "cat" };
-
+console.log();
 console.log(animal.name);
 // animal['species']
 
