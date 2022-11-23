@@ -68,50 +68,51 @@ let queryload = document.querySelector("body");
 queryload.addEventListener("load", nextquestion(), true);
 
 function nextquestion() {
-  queryanswer.innerHTML = "";
-  queryanswer = document.querySelector("#answer");
-  let processStr = "Q" + (processNum + 1).toString();
-  for (let i of answers) {
-    if (i.questions_uid == processStr) {
-      queryquestion.innerHTML = `<div> (${processNum + 1}) ${
-        questions_list[processNum]["question"]
-      }</div>`;
-      for (let j of example_list) {
-        if (i.example_uid == j.example_uid)
-          queryanswer.innerHTML += `<div><input type="radio" name="answer_uid_radio" id="${
-            j.example_uid
-          }"/>(${j.example_uid.slice(1)}) ${j.example}</div>`;
-      }
-    }
-  }
-  processNum += 1;
-  if (processNum == 6) {
+  if (processNum == 5) {
     alert("마지막화면입니다");
     return;
+  } else {
+    queryanswer.innerHTML = "";
+    queryanswer = document.querySelector("#answer");
+    let processStr = "Q" + (processNum + 1).toString();
+    for (let i of answers) {
+      if (i.questions_uid == processStr) {
+        queryquestion.innerHTML = `<div> (${processNum + 1}) ${
+          questions_list[processNum]["question"]
+        }</div>`;
+        for (let j of example_list) {
+          if (i.example_uid == j.example_uid)
+            queryanswer.innerHTML += `<div><input type="radio" name="answer_uid_radio" id="${
+              j.example_uid
+            }"/>(${j.example_uid.slice(1)}) ${j.example}</div>`;
+        }
+      }
+    }
+    processNum += 1;
   }
 }
 
 function prevquestion() {
-  processNum -= 1;
-  queryanswer.innerHTML = "";
-  queryanswer = document.querySelector("#answer");
-  let processStr = "Q" + (processNum + 1).toString();
-  for (let i of answers) {
-    if (i.questions_uid == processStr) {
-      queryquestion.innerHTML = `<div> (${processNum + 1}) ${
-        questions_list[processNum]["question"]
-      }</div>`;
-      for (let j of example_list) {
-        if (i.example_uid == j.example_uid)
-          queryanswer.innerHTML += `<div><input type="radio" name="answer_uid_radio" id="${
-            j.example_uid
-          }"/>(${j.example_uid.slice(1)}) ${j.example}</div>`;
-      }
-    }
-  }
-
   if (processNum == 0) {
     alert("처음화면입니다");
     return;
+  } else {
+    processNum -= 1;
+    queryanswer.innerHTML = "";
+    queryanswer = document.querySelector("#answer");
+    let processStr = "Q" + (processNum + 1).toString();
+    for (let i of answers) {
+      if (i.questions_uid == processStr) {
+        queryquestion.innerHTML = `<div> (${processNum + 1}) ${
+          questions_list[processNum]["question"]
+        }</div>`;
+        for (let j of example_list) {
+          if (i.example_uid == j.example_uid)
+            queryanswer.innerHTML += `<div><input type="radio" name="answer_uid_radio" id="${
+              j.example_uid
+            }"/>(${j.example_uid.slice(1)}) ${j.example}</div>`;
+        }
+      }
+    }
   }
 }
