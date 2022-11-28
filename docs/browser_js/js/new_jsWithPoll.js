@@ -55,31 +55,83 @@ const answers = [
 ];
 
 let answers_arr = [];
+let answers_arr_arr = [];
+let answers_obj = [];
 let compare_element = "";
-let question_div = document.querySelector("#question_div");
+let idx = 0;
 
+// answers_arr과 answers_arr_arr 생성
 answers.forEach((element) => {
   if (compare_element != element["questions_uid"]) {
+    idx += 1;
     answers_arr.push(element["questions_uid"]);
     answers_arr.push(element["example_uid"]);
+    answers_arr_arr.push([element["questions_uid"], element["example_uid"]]);
   } else {
     answers_arr.push(element["example_uid"]);
+    answers_arr_arr[idx - 1].push(element["example_uid"]);
   }
   compare_element = element["questions_uid"];
 });
 
-answers_arr.forEach((element) => {
-  questions_list.forEach((element_Q) => {
-    if (element == element_Q["questions_uid"]) {
-      question_div.innerHTML = element_Q["question"];
-    }
-  });
-  example_list.forEach((element_E) => {
-    if (element == element_E["example_uid"]) {
-      let answer_div = document.querySelector("#answer_div");
-      answer_div.innerHTML = element_E["example"];
-    }
-  });
-});
+// answers_obj 생성
+for (let i = 0; i < answers_arr_arr.length; i++) {
+  answers_obj[i] = { questions_uid: answers_arr_arr[i][0] };
+  answers_obj[i].example_uid = answers_arr_arr[i].slice(1);
+}
 
-console.log();
+function getQuestionByuid(questions_uid) {
+  for (let i of questions_list)
+    if (questions_uid == i["questions_uid"]) {
+      return i["question"];
+    }
+}
+
+function getExampleByuid(example_uid) {
+  for (let i of example_list) {
+    if (example_uid == i["example_uid"]) {
+      return i["example"];
+    }
+  }
+}
+
+let queryQuestion = document.querySelector("#question_div");
+let queryAnswer = document.querySelector("#answer_div");
+
+function setContent(ProbNum) {
+  queryAnswer.innerHTML = "";
+  queryQuestion.innerHTML = `${ProbNum + 1}. ${getQuestionByuid(
+    answers_obj[ProbNum]["questions_uid"]
+  )}`;
+  for (let i = 0; i < answers_obj[ProbNum]["example_uid"].length; i++) {
+    queryAnswer.innerHTML += `(${i + 1}) ${getExampleByuid(
+      answers_obj[ProbNum]["example_uid"][i]
+    )} `;
+  }
+}
+
+let pageNum = 0;
+setContent(pageNum);
+
+function nextProb() {
+  if (pageNum > answers_obj.length - 2) {
+    window.alert("마지막 번호입니다");
+  } else {
+    pageNum += 1;
+    setContent(pageNum);
+  }
+}
+
+function prevProb() {
+  if (pageNum < 1) {
+    window.alert("첫번째 번호입니다");
+  } else {
+    pageNum -= 1;
+    setContent(pageNum);
+  }
+}
+
+let nextbtn = document.querySelector("#nextbtn");
+nextbtn.addEventListener("click", nextProb);
+let prevbtn = document.querySelector("#prevbtn");
+prevbtn.addEventListener("click", prevProb);

@@ -1,0 +1,20 @@
+* {
+  border: 1px dotted gray;
+}
+#main_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1rem;
+  text-align: center;
+}
+#img1_none {
+  display: none;
+}
+#img2_hidden {
+  visibility: hidden;
+}
+#img3_reset {
+  display: block;
+  visibility: visible;
+}
