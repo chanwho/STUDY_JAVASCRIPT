@@ -15,14 +15,18 @@ btn3.addEventListener("click", (event) => {
   reset(event);
 });
 function display_none(event) {
-  queryimg1.innerHTML = `
-    <img id="img1_none" src="https://placeimg.com/320/240/nature" alt="" />
-  `;
+  //   queryimg1.innerHTML = `
+  //     <img id="img1_none" src="https://placeimg.com/320/240/nature" alt="" />
+  //   `;
+  queryimg1.style.display = "none";
 }
 function visibility_hidden() {
-  queryimg2.innerHTML = `<img id="img2_hidden" src="https://placeimg.com/320/240/nature" alt="" />`;
+  //   queryimg2.innerHTML = `<img id="img2_hidden" src="https://placeimg.com/320/240/nature" alt="" />`;
+  queryimg2.style.visibility = "hidden";
 }
 function reset() {
-  queryimg1.innerHTML = `<img id="img3_reset" src="https://placeimg.com/320/240/nature" alt="" />`;
-  queryimg2.innerHTML = `<img id="img3_reset" src="https://placeimg.com/320/240/nature" alt="" />`;
+  //   queryimg1.innerHTML = `<img id="img3_reset" src="https://placeimg.com/320/240/nature" alt="" />`;
+  //   queryimg2.innerHTML = `<img id="img3_reset" src="https://placeimg.com/320/240/nature" alt="" />`;
+  queryimg1.style.display = "block";
+  queryimg2.style.visibility = "visible";
 }
