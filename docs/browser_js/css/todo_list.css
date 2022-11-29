@@ -1,9 +1,21 @@
-* {
+/* * {
   border: 1px dotted gray;
+} */
+* {
+  /* padding: 0.5rem; */
+  font-size: 40px;
+}
+#body_div {
+  padding: 2%;
 }
 
 #title {
   text-align: center;
+  background-color: darkblue;
+  color: orange;
+  border: darkblue;
+  height: 10%;
+  width: 91%;
 }
 
 #newTasks {
@@ -13,7 +25,9 @@
 #newtask {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  width: 90%;
+  border: 1px solid black;
+  padding: 2% 0% 2% 1%;
 }
 
 #icon {
@@ -23,4 +37,26 @@
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+#title {
+  font-size: 3rem;
+}
+
+#taskInput {
+  height: 3rem;
+  justify-content: center;
+}
+#taskName {
+  width: 70%;
+  height: 65%;
+}
+
+#addbtn {
+  width: 20%;
+  height: 70%;
+}
+
+.icon {
+  width: 10%;
 }
