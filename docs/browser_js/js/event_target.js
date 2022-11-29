@@ -15,3 +15,23 @@ function singleEvent(event) {
 // visibility : hidden
 // display = "block"
 // visibility = "visible"
+
+let querykeydown = document.querySelector("#keydown");
+querykeydown.addEventListener("keydown", (event) => {
+  if (event.code == "Enter") {
+    keydownDesc(querykeydown.value);
+  }
+});
+
+function keydownDesc(desc) {
+  let querykeydownDesc = document.querySelector("#keydownDesc");
+  querykeydownDesc.innerHTML = desc;
+}
+
+let queryload = document.querySelector("#keydownDesc");
+// let queryload = document.querySelector("body");
+queryload.addEventListener("load", queryLoad());
+
+function queryLoad() {
+  queryload.innerHTML = "Done on Load";
+}
